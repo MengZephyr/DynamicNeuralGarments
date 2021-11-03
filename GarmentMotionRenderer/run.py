@@ -13,14 +13,14 @@ USE_CUDA = torch.cuda.is_available()
 print('balin-->', USE_CUDA)
 device = torch.device("cuda:1" if USE_CUDA else "cpu")
 
-prefRoot = '../Data/Ver_5/case_5/'
+prefRoot = '../test/'
 viewRoot = '/'
-mapPref = 'V_test/C_map_2287/'
-bgPref = 'V_test/bg/'
+mapPref = 'C_map_2287/'
+bgPref = 'bg/'
 JointPref = '30_JFeat_2_10/'
 uvName = prefRoot + '30_uvMesh.obj'
 
-saveRoot = '../rst/case_5/'
+saveRoot = '../rst/'
 
 numFeats = 2287
 DimFeat = 16
@@ -33,13 +33,14 @@ DimOut = 3
 
 Frame0 = 1
 
-FrameList = [[j, 0] for j in range(335, 336)]
+FrameList = [[j, 0] for j in range(335, 541)]
 
 KK = len(FrameList) // BatchSize
 KK = KK if len(FrameList) % BatchSize == 0 else KK+1
+
 Models = primUV_Architect(device=device, numFeatures=numFeats, FeatDim=DimFeat, JointDim=DimJoint,
                           OutDim=DimOut, viewH=view_H, viewW=view_W, uvMeshFile=uvName,
-                          genCKPName='../ckp_A/multi_2Run/t_80000_Gen.ckp',
+                          genCKPName='../ckp/MultiLayers/t_80000_Gen.ckp',
                           disCKPName=None, isTrain=False, isContinue=False)
 
 
