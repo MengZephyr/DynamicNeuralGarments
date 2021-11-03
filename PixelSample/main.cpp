@@ -150,31 +150,30 @@ void MultiLevelProjMap(const std::vector<cv::Vec4f>& matArray, int numLevel,
 void MultiC_gen_motionSampleViewMap()
 {
 	//please check camera frameID
-	string viewRoot = "C:/DynamicNerualGarment/case_1/";
-	string objRoot = "C:/DynamicNerualGarment/case_1/";
+	string viewRoot = "train/";
+	string objRoot = "train/";
 
 	int img_Height[5] = { 512, 256, 128, 64, 32 };
 	int img_Width[5] = { 512, 256, 128, 64, 32 };
 	int numLevel = 1;
 
-	string uvName = objRoot + "uv/30_uvMesh.ply";
+	string uvName = objRoot + "/30_uvMesh.ply";
 	R_Mesh uvMesh;
 	readPly(uvName, uvMesh.verts, uvMesh.faceInds);
 
-	string geoName = objRoot + "uv/30_uvMesh.ply";
+	string geoName = objRoot + "/30_uvMesh.ply";
 	R_Mesh geoMesh;
 	readPly(geoName, geoMesh.verts, geoMesh.faceInds);
 
-	int frameLow = 1;
+	int frameLow = 2;
 
-	string meshNamePre = "30_L/PD30_";
-	//string meshNamePre = "aa_tmp/seen_res_._.._.._dataset_longskirt_mocapJoints4_jts_";
+	string meshNamePre = "coarse_garment/30_L/PD30_";
 
 //#define ONEBEFORE
 	bool ifColor = false;
-	int FD = 1;
-	int frame0 = 1;
-	int frame1 = 586;
+	int FD = 0;
+	int frame0 = 2;
+	int frame1 = 850;
 	int numViews = 10;
 	frameLow = MAX(frameLow + FD, 0);
 	for (int fID = frame0; fID < frame1 + 1; fID++)
@@ -212,8 +211,7 @@ void MultiC_gen_motionSampleViewMap()
 			char viewbuffer[8];
 			std::snprintf(viewbuffer, sizeof(viewbuffer), "%d", vID);
 
-			//string vMatName = viewRoot + "cameras/" + string(camera_fbuffer) + "_" + string(viewbuffer) + "_c.txt";
-			string vMatName = viewRoot + "camera.txt";
+			string vMatName = viewRoot + "cameras/" + string(camera_fbuffer) + "_" + string(viewbuffer) + "_c.txt";
 			std::vector<cv::Vec4f> matArray = readMatrixFile(vMatName, ifColor);
 			/*if (ifColor)
 			{
