@@ -21,9 +21,13 @@ This folder contains python scripts for blender.
 ## Citation
 If you use our code or model, please cite our paper:
 
-  @article{zhang2021dynamic,
-  title={Dynamic Neural Garments},
-  author={Zhang, Meng and Ceylan, Duygu and Wang, Tuanfeng and Mitra, Niloy J},
-  journal={arXiv preprint arXiv:2102.11811},
-  year={2021}
-}
+  @article{10.1145/3478513.3480497,
+author = {Zhang, Meng and Wang, Tuanfeng Y. and Ceylan, Duygu and Mitra, Niloy J.},
+title = {Dynamic Neural Garments},
+year = {2021},
+issue_date = {December 2021},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {40},
+number = {6},
+issn = {0730-0301}}
