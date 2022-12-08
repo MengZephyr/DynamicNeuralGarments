@@ -27,14 +27,14 @@ std::vector<cv::Vec4f> readMatrixFile(std::string fName, bool ifColor=false)
 		if (mmArray.size() < 9)
 		{
 			cv::Vec4f m;
-			ss >> m[0] >> m[1] >> m[2] >> m[3];
-			mmArray.push_back(m);
+			if(ss >> m[0] >> m[1] >> m[2] >> m[3])
+				mmArray.push_back(m);
 		}
 		else if (ifColor)
 		{
 			cv::Vec4f m(0., 0., 0., 0.);
-			ss >> m[0] >> m[1] >> m[2];
-			mmArray.push_back(m);
+			if(ss >> m[0] >> m[1] >> m[2])
+				mmArray.push_back(m);
 		}
 	}
 	return mmArray;
